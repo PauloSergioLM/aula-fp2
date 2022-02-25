@@ -46,7 +46,7 @@
                                  action="#{exemploController.adicionar}" />
 
 
-                <p:dataTable id="formulario" var="item" rowKey="#{item.nome}" value="#{exemploController.pessoas}"  selection="#{exemploController.selecionada}" selectionMode="single" >
+                <p:dataTable id="formulario" var="item" rowKey="#{item.status}" value="#{exemploController.pessoas}"  selection="#{exemploController.selecionada}" selectionMode="single" >
                     <f:facet name="header">
                         Pessoas cadastradas.
                     </f:facet>
