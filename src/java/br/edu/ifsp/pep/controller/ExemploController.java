@@ -18,6 +18,7 @@ import javax.inject.Named;
 public class ExemploController implements Serializable {
 
     private Pessoa pessoa;
+    private Pessoa selecionada;
     private List<Pessoa> pessoas = new ArrayList<>();
 
     public ExemploController() {
@@ -29,15 +30,30 @@ public class ExemploController implements Serializable {
         System.out.println("Executou o método teste.");
         System.out.println("Nome: " + this.pessoa.getNome());
     }
-    
+
     public void adicionar() {
         System.out.println("adicionou pessoa na lista.");
         this.pessoas.add(pessoa);
         this.pessoa = new Pessoa();
         addMessage(FacesMessage.SEVERITY_INFO, "Informação", "Cadastro realizado.");
-        
+
     }
-    
+
+    public void excluir() {
+        System.out.println("Removeu pessoa da lista.");
+        this.pessoas.remove(selecionada);
+        this.selecionada = null;
+        addMessage(FacesMessage.SEVERITY_INFO, "Informação", "Exclusão realizado.");
+    }
+
+    public Pessoa getSelecionada() {
+        return selecionada;
+    }
+
+    public void setSelecionada(Pessoa selecionada) {
+        this.selecionada = selecionada;
+    }
+
     private void addMessage(FacesMessage.Severity severity, String summary, String detail) {
         FacesContext.getCurrentInstance().
                 addMessage(null, new FacesMessage(severity, summary, detail));
