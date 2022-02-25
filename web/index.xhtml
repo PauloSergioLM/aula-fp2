@@ -42,11 +42,11 @@
                 </p:panelGrid>
 
                 <p:commandButton value="Enviar" 
-                                 update="formulario"
+                                 update="tabela, growl"
                                  action="#{exemploController.adicionar}" />
 
 
-                <p:dataTable id="formulario" var="item" rowKey="#{item.status}" value="#{exemploController.pessoas}"  selection="#{exemploController.selecionada}" selectionMode="single" >
+                <p:dataTable id="tabela" var="item" rowKey="#{item.status}" value="#{exemploController.pessoas}"  selection="#{exemploController.selecionada}" selectionMode="single" >
                     <f:facet name="header">
                         Pessoas cadastradas.
                     </f:facet>
@@ -64,8 +64,13 @@
                         <h:outputText value="#{item.uf}" />
                     </p:column> 
                 </p:dataTable>
+                
             </div>
-            <p:commandButton value="Excluir" update="formulario" action="#{exemploController.excluir()}" />
+            <p:contextMenu for="tabela">
+                    <p:menuitem value="Deletar" update="tabela, formulario:growl" icon="pi pi-times"
+                                action="#{exemploController.excluir()}"/>
+                </p:contextMenu>
+            <p:commandButton value="Excluir" update="tabela, formulario:growl" action="#{exemploController.excluir()}" />
         </h:form>
     </h:body>
 </html>
