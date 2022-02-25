@@ -46,8 +46,7 @@
                                  action="#{exemploController.adicionar}" />
 
 
-                <p:dataTable id="pessoas" var="item" 
-                             value="#{exemploController.pessoas}" >
+                <p:dataTable id="formulario" var="item" rowKey="#{item.nome}" value="#{exemploController.pessoas}"  selection="#{exemploController.selecionada}" selectionMode="single" >
                     <f:facet name="header">
                         Pessoas cadastradas.
                     </f:facet>
@@ -63,9 +62,10 @@
                     </p:column>
                     <p:column headerText="UF">
                         <h:outputText value="#{item.uf}" />
-                    </p:column>
+                    </p:column> 
                 </p:dataTable>
             </div>
+            <p:commandButton value="Excluir" update="formulario" action="#{exemploController.excluir()}" />
         </h:form>
     </h:body>
 </html>
